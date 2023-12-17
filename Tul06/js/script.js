@@ -80,3 +80,20 @@ const statusBarNoWords = statusBar.querySelector ('span');
 statusBarNoWords.textContent = cards.length;
 
 //Task4:keybroad events -navigation
+/**
+ * 
+ * @param {KeyboardEvent} event 
+ */
+function onKeyUp(event) {
+    switch(event.key){
+        case 'ArrowLeft':
+            prevCard();
+            break;
+        case 'ArrowRight':
+            nextCard();
+            break;
+    }
+    console.log(event.key);
+}
+
+document.addEventListener('keydown', onKeyUp);
