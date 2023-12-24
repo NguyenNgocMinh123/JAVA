@@ -77,7 +77,57 @@ const statusBarCurrentInedx = statusBar.querySelector('strong');
 const statusBarNoWords = statusBar.querySelector ('span');
 
 //set max Index
-statusBarNoWords.textContent = cards.length;
+// on start: show first word
+let currentIndex = 0;
+
+
+function setIndex(index) {
+    // check if valid index
+    if(index >= 0 && index < cards.length){
+    // hide current card
+        cards[currentIndex].classList.add('hidden');
+
+    // show card at index
+        cards[index].classList.remove('hidden');
+        currentIndex = index;
+        statusCurrentIndex.textContent = currentIndex+1;
+
+    // disable/ enable navigating buttons
+        btnPrev.disabled = currentIndex === 0;
+        
+        // if(currentIndex === 0){
+        //     btnPrev.disabled = true;
+        // } else {
+        //     btnNext.disabled = false;
+        // }
+
+        btnNext.disabled = currentIndex === cards.length-1;
+
+        // if(currentIndex === cards.length-1){
+        //     btnNext.disabled = true;// }
+    }
+}
+
+function prevCard() {
+    setIndex(currentIndex-1);
+}
+
+function nextCard() {
+    setIndex(currentIndex+1); //1
+    //if next index is valid
+
+    // + currentIndex
+
+    // hide current card
+    //show next card
+    //disable button next
+    //enable button next
+    
+}
+
+//listen for event
+btnPrev.addEventListener('click', prevCard);
+btnNext.addEventListener('click', nextCard);
 
 //Task4:keybroad events -navigation
 /**
